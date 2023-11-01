@@ -11,7 +11,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Login() {
+export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,34 +19,30 @@ export default function Login() {
   const supabase = createClientComponentClient();
   const dispatch = useAppDispatch();
 
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     setLoading(true);
-    await supabase.auth
-      .signInWithPassword({
-        email,
-        password,
-      })
-      .then(() => {
-        dispatch(getUserSession());
-        router.push("/");
-        router.refresh();
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${location.origin}/auth/callback`,
+      },
+    });
+    router.refresh();
+    router.push('/login');
+    setLoading(false);
   };
 
   return (
     <div className="flex flex-row h-screen items-center justify-center">
-      <div className="w-full max-w-xs items-center">
+      <div className="w-full max-w-xs">
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4"
           action="/"
           method="POST"
-          onSubmit={handleSignIn}
+          onSubmit={handleSignUp}
         >
-          <div className="text-xl font-bold m-2 mb-5">Continue Exploring</div>
+          <div className="text-xl font-bold m-2 mb-5">Create New Account</div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email
@@ -61,7 +57,6 @@ export default function Login() {
               }}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
-              disabled={loading}
             />
           </div>
           <div className="mb-6">
@@ -78,16 +73,13 @@ export default function Login() {
               }}
               className="shadow appearance-none border rounded w-full mb-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
-              disabled={loading}
             />
             <p className="text-gray-400 text-xs italic">
               please choose a password
             </p>
           </div>
           <div className="flex items-center justify-center">
-            <Button type="submit" disabled={loading}>
-              Log In
-            </Button>
+            <Button type="submit">Sign Up</Button>
           </div>
         </form>
       </div>

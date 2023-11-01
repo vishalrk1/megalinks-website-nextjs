@@ -8,6 +8,7 @@ import { getFeedbacks } from "@/redux/feedbacks/actions";
 import { useAppDispatch } from "@/redux/hooks";
 import { getScenePackData } from "@/redux/scenepacks/actions";
 import { getTutorials } from "@/redux/tutorials/actions";
+import { getUserSession } from "@/redux/userSession/actions";
 import { useEffect, useState } from "react";
 
 export default function MegalinksLayout({
@@ -16,7 +17,6 @@ export default function MegalinksLayout({
     children: React.ReactNode;
 }) {
     const dispatch = useAppDispatch();
-    const [loading, setLoading] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -26,6 +26,7 @@ export default function MegalinksLayout({
         dispatch(getFeedbacks({}));
         dispatch(getEditingTools());
         dispatch(getScenePackData({isApproved: true}));
+        dispatch(getUserSession());
         setMounted(true);
     }, [dispatch]);
 

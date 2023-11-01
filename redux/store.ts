@@ -7,6 +7,7 @@ import TutorialsReducer from "./tutorials/reducer";
 import AnimepacksReducer from "./animepacks/reducer";
 import feedbacksReducer from "./feedbacks/reducer";
 import EditingtoolsReducer from "./editingtools/reducer";
+import UserSessionReducer from "./userSession/reducer";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     fetchAnimepacks: AnimepacksReducer,
     fetchFeedbacks: feedbacksReducer,
     fetchEditingTools: EditingtoolsReducer,
+    fetchUserSession: UserSessionReducer,
   },
 });
 

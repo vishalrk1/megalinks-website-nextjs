@@ -8,6 +8,9 @@ import { Scenepack } from "@/redux/types";
 import IconButton from "../icon-button";
 import Link from "next/link";
 import ScenepackDetailsModal from "../modals/scenepack-modal";
+import { userSessionSelector } from "@/redux/userSession/selector";
+import { useAppSelector } from "@/redux/hooks";
+import UserNotLoggedInModal from "../modals/Login-modal";
 
 interface ScenepackCardProps {
   data: Scenepack;
@@ -15,27 +18,23 @@ interface ScenepackCardProps {
 
 const ScenepackCard: React.FC<ScenepackCardProps> = ({ data }) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const session = useAppSelector(userSessionSelector);
+  const [openPackModal, setOpenPackModal] = useState(false);
+  const [openNotLoogedInModal, setOpenNotLoogedInModal] = useState(false);
 
-  const handleClick = () => {
-    // router.push(`/product/${data?.id}`);
+  const handleClick = (link: string) => {
+    console.log(session);
+    if(session['session']){
+      router.push(link);
+    } else {
+      setOpenNotLoogedInModal(true);
+    }
   };
-
-  //   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-  //     event.stopPropagation();
-
-  //     previewModal.onOpen(data);
-  //   };
-
-  //   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-  //     event.stopPropagation();
-
-  //     cart.addItem(data);
-  //   };
-
+  
   return (
     <>
-    <ScenepackDetailsModal isOpen={open} data={data} onClose={()=>setOpen(false)}/>
+    <ScenepackDetailsModal isOpen={openPackModal} data={data} onClose={()=>setOpenPackModal(false)} />
+    <UserNotLoggedInModal isOpen={openNotLoogedInModal} onClose={()=>setOpenNotLoogedInModal(false)} />
     <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -48,15 +47,13 @@ const ScenepackCard: React.FC<ScenepackCardProps> = ({ data }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton
-              onClick={() => setOpen(true)}
+              onClick={() => setOpenPackModal(true)}
               icon={<Expand size={20} className="text-gray-600" />}
             />
-            <Link href={data.packUrl} target="_blank">
-              <IconButton
-                onClick={() => {}}
+            <IconButton
+                onClick={() => handleClick(data.packUrl)}
                 icon={<Download size={20} className="text-gray-600" />}
-              />
-            </Link>
+            />
           </div>
         </div>
       </div>
