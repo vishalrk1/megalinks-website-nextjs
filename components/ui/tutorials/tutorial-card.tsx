@@ -6,6 +6,10 @@ import IconButton from "../icon-button";
 import Link from "next/link";
 import { Badge } from "../badge";
 import TutorialsDetailsModal from "../modals/tutorials-modal";
+import { useAppSelector } from "@/redux/hooks";
+import { selectUserSession } from "@/redux/userSession/selector";
+import { useRouter } from "next/navigation";
+import UserNotLoggedInModal from "../modals/Login-modal";
 
 interface ScenepackCardProps {
   data: Tutorial;
@@ -14,6 +18,9 @@ interface ScenepackCardProps {
 
 const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
   const [open, setOpen] = useState(false);
+  const [openNotLoogedInModal, setOpenNotLoogedInModal] = useState(false);
+  const router = useRouter();
+  const session = useAppSelector(selectUserSession);
 
   const youtube_parser = (url: string) => {
     const regExp =
@@ -22,9 +29,28 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
     return match && match[7].length == 11 ? match[7] : false;
   };
 
+  const handelWatchClick = (link: string) => {
+    if (session["session"]) {
+      router.push(link);
+    } else {
+      setOpenNotLoogedInModal(true);
+    }
+  };
+
   return (
     <>
-      <TutorialsDetailsModal isOpen={open} data={data} onClose={() => setOpen(false)} imageUrl={`https://img.youtube.com/vi/${youtube_parser(data.ytUrl)}/mqdefault.jpg`}/>
+      <TutorialsDetailsModal
+        isOpen={open}
+        data={data}
+        onClose={() => setOpen(false)}
+        imageUrl={`https://img.youtube.com/vi/${youtube_parser(
+          data.ytUrl
+        )}/mqdefault.jpg`}
+      />
+      <UserNotLoggedInModal
+        isOpen={openNotLoogedInModal}
+        onClose={() => setOpenNotLoogedInModal(false)}
+      />
       <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
         {/* Image & actions */}
         <div className="aspect-video rounded-xl bg-gray-100 relative">
@@ -42,12 +68,10 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
                 onClick={() => setOpen(true)}
                 icon={<Expand size={20} className="text-gray-600" />}
               />
-              <Link href={data.ytUrl} target="_blank">
-                <IconButton
-                  onClick={() => {}}
-                  icon={<Play size={20} className="text-gray-600" />}
-                />
-              </Link>
+              <IconButton
+                onClick={() => handelWatchClick(data.ytUrl)}
+                icon={<Play size={20} className="text-gray-600" />}
+              />
             </div>
           </div>
         </div>
