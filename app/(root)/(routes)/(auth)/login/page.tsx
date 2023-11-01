@@ -8,8 +8,10 @@ import { getUserSession } from "@/redux/userSession/actions";
 import UserSessionReducer from "@/redux/userSession/reducer";
 import { userSessionSelector } from "@/redux/userSession/selector";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { error } from "console";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,20 +23,22 @@ export default function Login() {
 
   const handleSignIn = async () => {
     setLoading(true);
-    await supabase.auth
-      .signInWithPassword({
-        email,
-        password,
-      })
-      .then(() => {
-        dispatch(getUserSession());
-        router.push("/");
-        router.refresh();
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (data["user"]) {
+      dispatch(getUserSession());
+      toast.success("Log In Sucessful Welcome Back :)");
+      router.push("/");
+      router.refresh();
+      setLoading(false);
+    } else if (error) {
+      console.log(error);
+      setLoading(false);
+      toast.error("Something went wrong please try again !!");
+    }
   };
 
   return (

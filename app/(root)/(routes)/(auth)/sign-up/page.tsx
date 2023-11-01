@@ -1,15 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Container from "@/components/ui/container";
 import { useAppDispatch } from "@/redux/hooks";
-import { AppDispatch } from "@/redux/store";
-import { getUserSession } from "@/redux/userSession/actions";
-import UserSessionReducer from "@/redux/userSession/reducer";
-import { userSessionSelector } from "@/redux/userSession/selector";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -17,20 +13,36 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const supabase = createClientComponentClient();
-  const dispatch = useAppDispatch();
 
   const handleSignUp = async () => {
     setLoading(true);
-    await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    });
-    router.refresh();
-    router.push('/login');
-    setLoading(false);
+    await supabase.auth
+      .signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${location.origin}/auth/callback`,
+        },
+      })
+      .then(() => {
+        router.refresh();
+        // sucess toast
+        toast.success(
+          (t) => (
+            <div className="flex flex-col spacy-y-3 ml-3">
+              <p className="font-bold mb-4">
+                Verification mail has been sent. Please verify your account.
+              </p>
+              <Button variant="outline" onClick={() => toast.dismiss(t.id)}>
+                Dismiss
+              </Button>
+            </div>
+          ),
+          { duration: 10000 }
+        );
+        router.push("/login");
+        setLoading(false);
+      });
   };
 
   return (

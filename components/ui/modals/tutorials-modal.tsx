@@ -62,10 +62,10 @@ const TutorialsDetailsModal: React.FC<TutorialsModalProps> = ({
             </div>
           ) : (
             <Link href={data.ytUrl} target="_blank">
-              <Button className="w-full">Download</Button>
+              <Button className="w-full">Watch</Button>
             </Link>
           )}
-        </div>
+        </div>  
       </div>
     </Modal>
   );
