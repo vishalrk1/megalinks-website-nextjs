@@ -20,7 +20,7 @@ const AnimepacksReducer = createReducer(initialState, (builder) => {
       state.animepackPending = true;
     })
     .addCase(getAnimePacks.fulfilled, (state, { payload }) => {
-      state.animepackData = payload;
+      state.animepackData = payload.data as AnimePack[];
       state.animepackPending = false;
     })
     .addCase(getAnimePacks.rejected, (state) => {

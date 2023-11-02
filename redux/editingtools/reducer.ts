@@ -21,7 +21,7 @@ const EditingtoolsReducer = createReducer(initialState, (builder) => {
       state.editintoolPending = true;
     })
     .addCase(getEditingTools.fulfilled, (state, { payload }) => {
-      state.editintoolData = payload;
+      state.editintoolData = payload.data as EditingTool[];
       state.editintoolPending = false;
     })
     .addCase(getEditingTools.rejected, (state) => {

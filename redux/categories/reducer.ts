@@ -21,7 +21,7 @@ const CategoriesReducer = createReducer(initialState, (builder) => {
         state.pending = true;
     })
     .addCase(getCategories.fulfilled, (state, {payload}) => {
-        state.data = payload;
+        state.data = payload.data;
         state.pending = false;
     })
     .addCase(getCategories.rejected, (state) => {

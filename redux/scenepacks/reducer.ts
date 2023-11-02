@@ -21,7 +21,7 @@ const ScenepackReducer = createReducer(initialState, (builder) => {
     })
     .addCase(getScenePackData.fulfilled, (state, { payload }) => {
       state.scenepackPending = false;
-      state.scenepackData = payload;
+      state.scenepackData = payload.data as Scenepack[];
     })
     .addCase(getScenePackData.rejected, (state) => {
       state.scenepackPending = false;

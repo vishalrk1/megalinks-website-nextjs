@@ -20,7 +20,7 @@ const TutorialsReducer = createReducer(initialState, (builder) => {
       state.tutorialsPending = true;
     })
     .addCase(getTutorials.fulfilled, (state, { payload }) => {
-      state.tutorialsData = payload;
+      state.tutorialsData = payload.data as Tutorial[];
       state.tutorialsPending = false;
     })
     .addCase(getTutorials.rejected, (state) => {

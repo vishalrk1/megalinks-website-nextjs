@@ -20,7 +20,7 @@ const feedbacksReducer = createReducer(initialState, (builder) => {
       state.feedbacksPending = true;
     })
     .addCase(getFeedbacks.fulfilled, (state, { payload }) => {
-      state.feedbacksData = payload;
+      state.feedbacksData = payload.data as Feedback[];
       state.feedbacksPending = true;
     })
     .addCase(getFeedbacks.rejected, (state) => {

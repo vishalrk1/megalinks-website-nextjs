@@ -22,7 +22,7 @@ const IndividualScenePackReducer = createReducer(initialState, (builder) => {
     })
     .addCase(getIndividualScenePack.fulfilled, (state, { payload }) => {
       state.pending = false;
-      state.data = payload;
+      state.data = payload?.data?.at(0);
     })
     .addCase(getIndividualScenePack.rejected, (state) => {
       state.pending = false;

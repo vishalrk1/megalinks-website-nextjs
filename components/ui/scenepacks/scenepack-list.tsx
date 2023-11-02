@@ -20,7 +20,6 @@ const ScenepackList: React.FC<ScenepackListProps> = ({
   isHome,
 }) => {
   const [filteredScenepacks, setFiltredScenepacks] = useState(items);
-  console.log(items);
 
   const handelSearchQuery = (query: string) => {
     const filtredList = items.filter((scenepack) =>

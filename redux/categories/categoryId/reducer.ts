@@ -21,7 +21,7 @@ const IndividualCategoryReducer = createReducer(initialState, (builder) => {
       state.pending = true;
     })
     .addCase(getIndividualCategory.fulfilled, (state, { payload }) => {
-      state.data = payload;
+      state.data = payload.data?.at(0);
       state.pending = false;
     })
     .addCase(getIndividualCategory.rejected, (state) => {
