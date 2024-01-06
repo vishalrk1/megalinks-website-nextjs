@@ -41,21 +41,23 @@ const ScenepackDetailsModal: React.FC<ModalProps> = ({
             />
           </div>
         </div>
-        <div className="flex flex-col ml-4 space-y-3">
-          <h1 className="font-bold text-lg mt-2">{data.label}</h1>
-          <p className="mt-1">This scenepack is submitted by {data.credit}</p>
+        <div className="flex flex-col ml-2 md:ml-4 md:space-y-3">
+          <h1 className="font-bold text-sm text-clip md:text-lg mt-2">{data.label}</h1>
+          <p className="invisible md:visible text-xs md:text-base">
+            This scenepack is submitted by {data.credit}
+          </p>
           {session["session"] === null ? (
-            <div className="flex flex-row items-center justify-center space-x-4">
+            <div className="flex flex-col space-y-1 w-max md:flex-row md:items-center md:justify-center md:space-x-4">
               <Link href="/login">
-                <Button>Log In</Button>
+                <Button className="text-sm md:text-base">Log In</Button>
               </Link>
               <Link href="/sign-up">
-                <Button>Sign Up</Button>
+                <Button className="text-sm md:text-base">Sign Up</Button>
               </Link>
             </div>
           ) : (
             <Link href={data.packUrl} target="_blank">
-              <Button className="w-full">Download</Button>
+              <Button className="w-fit md:w-full">Download</Button>
             </Link>
           )}
         </div>

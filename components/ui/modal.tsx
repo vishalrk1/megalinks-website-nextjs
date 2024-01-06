@@ -26,11 +26,11 @@ import {
   
       return (  
           <Dialog open={isOpen} onOpenChange={onChange} >
-              <DialogContent className="md:max-w-fit">
-                  <DialogHeader>
+              <DialogContent className="w-[330px] md:max-w-fit">
+                  <DialogHeader className="flex items-start justify-start md:items-center md:justify-center">
                       <DialogTitle>{title}</DialogTitle>
                   </DialogHeader>
-                  <div className="w-full">{children}</div>
+                  <div className="w-[300px] md:w-full">{children}</div>
               </DialogContent>
           </Dialog>
       )
