@@ -12,7 +12,7 @@ const UserNotLoggedInModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Want To Access The Links :)"
+      title="Want To Access The Links 🙂"
     >
       <div className="flex flex-col m-2 space-y-4">
         <h2>

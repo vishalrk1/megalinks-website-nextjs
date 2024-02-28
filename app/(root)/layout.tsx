@@ -44,12 +44,12 @@ export default function MegalinksLayout({
     }
 
     return (
-        <>
+        <main className="bg-white">
             <div className="fixed top-0 z-10 w-full h-max"> 
                 <Navbar />
             </div>
             {children}
             <Footer />
-        </>
+        </main>
     );
 };

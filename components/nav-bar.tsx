@@ -30,7 +30,7 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="border-b bg-white">
+    <nav className="border-b bg-white shadow-sm">
       <div className="flex flex-row h-16 items-center px-4 space-x-2">
         <div className="flex-1 flex flex-row space-x-5">
           <MobileSidebar />

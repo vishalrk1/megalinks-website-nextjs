@@ -54,7 +54,7 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
         isOpen={openNotLoogedInModal}
         onClose={() => setOpenNotLoogedInModal(false)}
       />
-      <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+      <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 shadow-md">
         {/* Image & actions */}
         <div className="aspect-video rounded-xl bg-gray-100 relative">
           <Image
