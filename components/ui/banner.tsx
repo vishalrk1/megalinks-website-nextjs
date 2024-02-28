@@ -7,7 +7,7 @@ interface BannerImageProps {
 const BannerImage: React.FC<BannerImageProps> = ({ data }) => {
   console;
   return (
-    <div className="p-2 sm:p-3 lg:p-4 rounded-xl overflow-hidden">
+    <section className="p-2 sm:p-3 lg:p-4 rounded-xl overflow-hidden">
       <div
         style={{ backgroundImage: `url(${data?.imageUrl})` }}
         className="rounded-xl relative aspect-video sm:aspect-[2.6/1.8] md:aspect-[2.6/1] overflow-hidden bg-cover"
@@ -18,7 +18,7 @@ const BannerImage: React.FC<BannerImageProps> = ({ data }) => {
           </div>
         </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 

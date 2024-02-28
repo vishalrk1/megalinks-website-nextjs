@@ -10,6 +10,8 @@ import { useAppSelector } from "@/redux/hooks";
 import { selectUserSession } from "@/redux/userSession/selector";
 import { useRouter } from "next/navigation";
 import UserNotLoggedInModal from "../modals/Login-modal";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 interface ScenepackCardProps {
   data: Tutorial;
@@ -21,6 +23,7 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
   const [openNotLoogedInModal, setOpenNotLoogedInModal] = useState(false);
   const router = useRouter();
   const session = useAppSelector(selectUserSession);
+  const {user} = useSelector((state: RootState) => state.auth);
 
   const youtube_parser = (url: string) => {
     const regExp =
@@ -30,7 +33,7 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
   };
 
   const handelWatchClick = (link: string) => {
-    if (session["session"]) {
+    if (user) {
       router.push(link);
     } else {
       setOpenNotLoogedInModal(true);
@@ -60,6 +63,7 @@ const TutorialCard: React.FC<ScenepackCardProps> = ({ data, editingTools }) => {
             )}/mqdefault.jpg`}
             alt={`megalinks-${data.label}-tutorial`}
             fill
+            sizes="100%"
             className="aspect-video object-cover rounded-md sm:aspect-[2.6/1.8]"
           />
           <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">

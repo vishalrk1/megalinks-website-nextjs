@@ -1,3 +1,9 @@
+export interface User {
+  uid: number;
+  name: string;
+  email: string;
+}
+
 export interface Scenepack {
   id: string;
   label: string;
@@ -48,4 +54,10 @@ export interface EditingTool {
   id: string;
   title: string;
   categoryId: string;
+}
+
+export interface Session {
+  user: User | null;
+  status: string | null;
+  error: string | null;
 }

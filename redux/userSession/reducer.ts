@@ -1,7 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { Session } from "@supabase/supabase-js";
-import { create } from "domain";
-import { init } from "next/dist/compiled/@vercel/og/satori";
+import { Session } from "../types";
 import { getUserSession } from "./actions";
 
 export type UserSessionState = {
@@ -13,7 +11,7 @@ const initailState = {
 } as UserSessionState;
 
 const UserSessionReducer = createReducer(initailState, (builder) => {
-  builder.addCase(getUserSession.fulfilled, (state, { payload }) => {
+  builder.addCase(getUserSession, (state, { payload }) => {
     state.session = payload;
   });
 });

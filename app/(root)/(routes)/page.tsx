@@ -38,7 +38,7 @@ const HomePage = () => {
 
   return (
     <Container>
-    <div className="p-1 md:p-8">
+    <main className="p-1 md:p-8">
       <div className="flex flex-col">
         {pending && <div className="flex h-screen items-center justify-center">Loading...</div>}
         {
@@ -54,7 +54,7 @@ const HomePage = () => {
           )
         }
       </div>
-    </div>
+    </main>
     </Container>
   );
 };

@@ -29,7 +29,7 @@ const ScenepackList: React.FC<ScenepackListProps> = ({
   };
 
   return (
-    <div className="h-full space-y-4">
+    <section className="h-full space-y-4">
       <div className="flex flex-row items-center">
         <h3 className="flex-1 font-bold md:text-3xl sm:text-2xl">{title}</h3>
         {isHome && (
@@ -50,7 +50,7 @@ const ScenepackList: React.FC<ScenepackListProps> = ({
             ))
           : items.map((item) => <ScenepackCard key={item.id} data={item} />)}
       </div>
-    </div>
+    </section>
   );
 };
 

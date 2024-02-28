@@ -16,8 +16,8 @@ const ScenepackSearchBar: React.FC<ScenepackSearchBarProps> = ({
         filterScenePacks(value);
     }
     return (
-        <div className="relative">
-            <Search className="absolute h-4 w-4 left-4 top-2"/>
+        <div className="relative bg-white rounded-md">
+            <Search className="absolute h-4 w-4 left-4 top-2 bg-white"/>
             <Input placeholder="Search.." className="pl-10" value={query} onChange={handleSearch}/>
         </div>
     );

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Button } from "../button";
 import { useAppSelector } from "@/redux/hooks";
 import { selectUserSession } from "@/redux/userSession/selector";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 interface TutorialsModalProps {
   isOpen: boolean;
@@ -21,7 +23,7 @@ const TutorialsDetailsModal: React.FC<TutorialsModalProps> = ({
   imageUrl,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const session = useAppSelector(selectUserSession);
+  const { session } = useSelector((state: RootState) => state.fetchUserSession);
 
   useEffect(() => {
     setIsMounted(true);
@@ -40,13 +42,14 @@ const TutorialsDetailsModal: React.FC<TutorialsModalProps> = ({
               src={imageUrl}
               alt={`megalinks-${data.label}-tutorial`}
               fill
+              sizes="100%"
               className="aspect-video object-cover rounded-md sm:aspect-[2.6/1.8]"
             />
           </div>
         </div>
         <div className="flex flex-col ml-4 space-y-4">
           <h1 className="font-semibold text-md">{data.label}</h1>
-          {session["session"] === null ? (
+          {session?.user === null ? (
             <div>
               <div className="flex flex-row items-center justify-center space-x-4">
                 <Link href="/login">

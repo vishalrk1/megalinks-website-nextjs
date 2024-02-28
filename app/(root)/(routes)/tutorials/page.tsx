@@ -40,7 +40,7 @@ const TutorialsPage = () => {
                     <div className="flex flex-row space-x-3 p-2">
                         {
                             filterButtonsData.map((item) => (
-                                <Button key={item.id} variant='outline' className={toolCat === item.id ? "text-xs bg-black text-white" : "text-xs"} onClick={() => handelTutorialFilter(item.id)}>
+                                <Button key={item.id} variant='outline' className={toolCat === item.id ? "text-xs bg-black text-white" : "text-xs bg-white"} onClick={() => handelTutorialFilter(item.id)}>
                                     {item.title}
                                 </Button>
                             ))

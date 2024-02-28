@@ -11,6 +11,10 @@ import ScenepackDetailsModal from "../modals/scenepack-modal";
 import { userSessionSelector } from "@/redux/userSession/selector";
 import { useAppSelector } from "@/redux/hooks";
 import UserNotLoggedInModal from "../modals/Login-modal";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+
+import BlurImage from '../../../app/assets/noImage.png'
 
 interface ScenepackCardProps {
   data: Scenepack;
@@ -18,13 +22,13 @@ interface ScenepackCardProps {
 
 const ScenepackCard: React.FC<ScenepackCardProps> = ({ data }) => {
   const router = useRouter();
-  const session = useAppSelector(userSessionSelector);
+  const { session } = useSelector((state: RootState) => state.fetchUserSession);
   const [openPackModal, setOpenPackModal] = useState(false);
   const [openNotLoogedInModal, setOpenNotLoogedInModal] = useState(false);
 
   const handleClick = (link: string) => {
     console.log(session);
-    if(session['session']){
+    if(session?.user){
       router.push(link);
     } else {
       setOpenNotLoogedInModal(true);
@@ -42,7 +46,10 @@ const ScenepackCard: React.FC<ScenepackCardProps> = ({ data }) => {
           src={data.imageUrl}
           alt={`megalinks-${data.label}-scenepack`}
           fill
+          sizes="100%"
           className="aspect-square object-cover rounded-md sm:aspect-[2.6/1.8]"
+          placeholder="blur"
+          blurDataURL="../../../app/assets/noImage.png"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">

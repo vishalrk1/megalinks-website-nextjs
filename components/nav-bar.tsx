@@ -6,21 +6,28 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { userSessionSelector } from "@/redux/userSession/selector";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserSession } from "@/redux/userSession/actions";
 import { useEffect } from "react";
+import { RootState } from "@/redux/store";
+import { logoutUser } from "@/redux/auth/action";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const supabase = createClientComponentClient();
-  const session = useAppSelector(userSessionSelector);
   const router = useRouter();
-  
+  const { session } = useSelector((state: RootState) => state.fetchUserSession);
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  console.log(session);
+
   const handelSignOut = async () => {
-    await supabase.auth.signOut();
-    dispatch(getUserSession());
+    dispatch(logoutUser());
     router.refresh();
-  }
+  };
+
+  useEffect(() => {
+    dispatch(getUserSession());
+  }, [user]);
 
   return (
     <nav className="border-b bg-white">
@@ -30,8 +37,10 @@ const Navbar = () => {
           <h1 className="space-x-2 text-xl font-bold">MegaLinks</h1>
           <MainNav className="hidden md:flex mx-6 ml-4" />
         </div>
-        {session['session'] ? (
-          <Button className="flex-2" onClick={handelSignOut}>Sign Out</Button>
+        {user ? (
+          <Button className="flex-2" onClick={handelSignOut}>
+            Log Out
+          </Button>
         ) : (
           <div className="space-x-2">
             <Link href="login">

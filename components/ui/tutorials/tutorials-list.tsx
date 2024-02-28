@@ -18,7 +18,7 @@ const TutorialsList: React.FC<TutorialListProps> = ({
   isHome,
 }) => {
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <div className="flex flex-row items-center">
         <h3 className="flex-1 font-bold md:text-3xl sm:text-2xl">{title}</h3>
         {isHome && (
@@ -36,7 +36,7 @@ const TutorialsList: React.FC<TutorialListProps> = ({
           <TutorialCard key={item.id} data={item} editingTools={editingtoolsData}/>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
