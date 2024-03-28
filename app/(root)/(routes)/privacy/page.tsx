@@ -48,12 +48,12 @@ const PrivacyPage = () => {
         </p>
         <h2 className="text-xl font-semibold mb-2">Third-Party Services:</h2>
         <p className="mb-4">
-          We do not use any third-party services that collect personal
+          {`We do not use any third-party services that collect personal
           information from children under the age of 13. We may use certain
           third-party services, such as analytics tools, to collect non-personal
           information about app usage. These services comply with the Children's
           Online Privacy Protection Act (COPPA) and have strict data protection
-          policies.
+          policies.`}
         </p>
         <h2 className="text-xl font-semibold mb-2">Disclosure:</h2>
         <p className="mb-4">
