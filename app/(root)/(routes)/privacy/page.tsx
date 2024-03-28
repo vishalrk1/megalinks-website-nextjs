@@ -1,8 +1,6 @@
-import BannerImage from "@/components/ui/banner";
-import Container from "@/components/ui/container";
+import BannerImage from "../../../../components/ui/banner";
+import Container from "../../../../components/ui/container";
 import React from "react";
-
-import BannerImg from "../../../assets/FeedbackHeader.jpg";
 
 const PrivacyPage = () => {
   return (
