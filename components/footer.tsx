@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -25,7 +26,9 @@ const Footer = () => {
             <div className="order-1 md:order-2">
               <span className="px-2">About us</span>
               <span className="px-2 border-l">Contact us</span>
-              <span className="px-2 border-l">Privacy Policy</span>
+              <Link href="/privacy">
+                <span className="px-2 border-l">Privacy Policy</span>
+              </Link>
             </div>
           </div>
         </div>
