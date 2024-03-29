@@ -1,21 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import playstoreIcon from "../app/assets/playstore.svg";
+
 const Footer = () => {
   return (
     <footer>
       <div className=" bg-gray-900">
         <div className="max-w-2xl mx-auto text-white py-10">
           <div className="text-center">
-            <h3 className="text-3xl mb-3"> Download MegaLinks Android App </h3>
+            <h3 className="text-xl md:text-3xl mb-3">
+              {" "}
+              Download MegaLinks Android App{" "}
+            </h3>
             <p> Stay updated and Keep Editing. </p>
             <div className="flex justify-center my-3">
-              <div className="flex items-center border w-auto rounded-lg px-4 py-2 w-52 mx-2">
-                <div className="text-left ml-3">
-                  <p className="text-xs text-gray-200">Download on </p>
-                  <p className="text-sm md:text-base"> Google Play Store </p>
+              <Link
+                href={
+                  "https://play.google.com/store/apps/details?id=com.vk.MegaLinks"
+                }
+                target="_"
+              >
+                <div className="flex items-center border w-auto rounded-lg px-4 py-2 w-52 mx-2">
+                  <Image
+                    src={playstoreIcon} //{"https://icons8.com/icon/L1ws9zn2uD01/google-play-store"}
+                    alt=""
+                    height={40}
+                    width={40}
+                  />
+                  <div className="text-left ml-3">
+                    <p className="text-xs text-gray-200">Download on </p>
+                    <p className="text-sm md:text-base"> Google Play Store </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="mt-8 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
