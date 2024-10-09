@@ -13,22 +13,44 @@ import { selectFeedbacks } from "@/redux/feedbacks/selector";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectScenepack } from "@/redux/scenepacks/selector";
 import { selectTutorials } from "@/redux/tutorials/selector";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+interface Props {
+  src: string;
+  alt: string;
+  isCenter?: boolean;
+}
+
+const MobileMockup: React.FC<Props> = ({ src, alt, isCenter }) => (
+  <div
+    className={`relative w-[180px] h-[500px] md:h-[500px]${
+      isCenter ? "scale-110 z-10 h-[620px] md:w-[320px]" : "scale-75 md:w-[250px]"
+    } transition-transform duration-500 ease-in-out`}
+  >
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={`rounded-[2rem] overflow-hidden object-contain`}
+    />
+  </div>
+);
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const {data, pending, error} = useAppSelector(selectIndividualCategory);
-  const {scenepackData} = useAppSelector(selectScenepack);
-  const {tutorialsData} = useAppSelector(selectTutorials);
-  const {editintoolData} = useAppSelector(selectEditingTools);
-  const {feedbacksData} = useAppSelector(selectFeedbacks);
+  const { data, pending, error } = useAppSelector(selectIndividualCategory);
+  const { scenepackData } = useAppSelector(selectScenepack);
+  const { tutorialsData } = useAppSelector(selectTutorials);
+  const { editintoolData } = useAppSelector(selectEditingTools);
+  const { feedbacksData } = useAppSelector(selectFeedbacks);
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getIndividualCategory('e4b4ad1d-e45d-4cf1-96a6-d10345c4bed2'))
+    dispatch(getIndividualCategory("e4b4ad1d-e45d-4cf1-96a6-d10345c4bed2"));
     setLoading(false);
   }, [dispatch]);
 
@@ -37,25 +59,36 @@ const HomePage = () => {
   const featuredFeedbacks = feedbacksData.filter((item) => item.isFeatured);
 
   return (
-    <Container>
-    <main className="p-1 md:p-8">
-      <div className="flex flex-col">
-        {pending && <div className="flex h-screen items-center justify-center">Loading...</div>}
-        {
-          data && (
-            <div className="space-y-3 md:space-y-5 pb-3">
-              <BannerImage data={data}/>
-              <div className="flex flex-col p-4 space-y-8">
-                <ScenepackList title="Featured Scenepacks" items={featuredScenepack} isHome={true}/>
-                <TutorialsList title="Featured Tutorials" tutorialsData={featuredTutorials} isHome={true} editingtoolsData={editintoolData}/>
-                <FeedbacHomekList title="User Reviews" feedbackData={featuredFeedbacks} isHome={true}/>
-              </div>
-            </div>
-          )
-        }
+    <main className="">
+      <div className="relative bg-white min-h-screen flex flex-col justify-center items-center p-8 overflow-hidden">
+        <div className="absolute h-[70%] bg-blue-500 top-0 left-0 right-0 rounded-b-md"></div>
+        <div className="relative z-10 text-white my-4">
+          <h1 className="text-5xl leading-6 md:text-6xl font-bold mb-4 text-start mt-12">
+            Mega Links Application
+          </h1>
+          <p className="text-center max-w-2xl mx-auto">
+            Megalinks is an android app where we provide free resources
+            available for video editing, like Scenepacks, project files of the
+            big editor, tutorials, etc..
+          </p>
+        </div>
+        <div className="relative z-2 flex flex-col md:flex-row gap-6 md:gap-16 justify-center items-center">
+          <MobileMockup
+            src="/mockups/ScenepackScreen.png"
+            alt="Temperature control screen"
+          />
+          <MobileMockup
+            src="/mockups/Homepage1.png"
+            alt="Energy management screen"
+            isCenter={true}
+          />
+          <MobileMockup
+            src="/mockups/TutorialScreen.png"
+            alt="Room control screen"
+          />
+        </div>
       </div>
     </main>
-    </Container>
   );
 };
 
