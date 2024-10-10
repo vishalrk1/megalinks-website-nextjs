@@ -30,27 +30,35 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="border-b bg-white shadow-sm">
-      <div className="flex flex-row h-16 items-center px-4 space-x-2">
-        <div className="flex-1 flex flex-row space-x-5">
+    <nav className="bg-blue-500 shadow-none border-0 z-20">
+      <div className="flex flex-row h-16 items-center justify-between px-4 space-x-2 border-0">
+        <div className="flex flex-row space-x-5">
           <MobileSidebar />
-          <h1 className="space-x-2 text-xl font-bold">MegaLinks</h1>
           <MainNav className="hidden md:flex mx-6 ml-4" />
         </div>
-        {user ? (
-          <Button className="flex-2" onClick={handelSignOut}>
-            Log Out
-          </Button>
-        ) : (
-          <div className="space-x-2">
-            <Link href="login">
-              <Button className="flex-2">LogIn</Button>
-            </Link>
-            <Link href="sign-up">
-              <Button className="flex-2">SignUp</Button>
-            </Link>
-          </div>
-        )}
+        <div>
+          {user ? (
+            <Button className="" onClick={handelSignOut}>
+              Log Out
+            </Button>
+          ) : (
+            <div className="space-x-2">
+              <Link href="login">
+                <Button
+                  className="flex-2 text-white hover:scale-110 transition-all duration-300"
+                  variant="link"
+                >
+                  LogIn
+                </Button>
+              </Link>
+              <Link href="sign-up">
+                <Button className="flex-2 bg-white hover:scale-110 transition-all duration-300 text-black hover:bg-white">
+                  SignUp
+                </Button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

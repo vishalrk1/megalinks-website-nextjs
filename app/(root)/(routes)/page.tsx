@@ -26,7 +26,9 @@ interface Props {
 const MobileMockup: React.FC<Props> = ({ src, alt, isCenter }) => (
   <div
     className={`relative w-[180px] h-[500px] md:h-[500px]${
-      isCenter ? "scale-110 z-10 h-[620px] md:w-[320px]" : "scale-75 md:w-[250px]"
+      isCenter
+        ? "scale-110 z-10 h-[620px] md:w-[320px]"
+        : "scale-75 md:w-[250px]"
     } transition-transform duration-500 ease-in-out`}
   >
     <Image
@@ -60,10 +62,10 @@ const HomePage = () => {
 
   return (
     <main className="">
-      <div className="relative bg-white min-h-screen flex flex-col justify-center items-center p-8 overflow-hidden">
+      <section className="relative bg-white min-h-screen flex flex-col justify-center items-center p-8 overflow-hidden">
         <div className="absolute h-[70%] bg-blue-500 top-0 left-0 right-0 rounded-b-md"></div>
-        <div className="relative z-10 text-white my-4">
-          <h1 className="text-5xl leading-6 md:text-6xl font-bold mb-4 text-start mt-12">
+        <div className="relative z-10 text-white mb-4">
+          <h1 className="text-5xl leading-6 md:text-6xl font-bold mb-4 text-start mt-2">
             Mega Links Application
           </h1>
           <p className="text-center max-w-2xl mx-auto">
@@ -72,7 +74,7 @@ const HomePage = () => {
             big editor, tutorials, etc..
           </p>
         </div>
-        <div className="relative z-2 flex flex-col md:flex-row gap-6 md:gap-16 justify-center items-center">
+        <div className="relative z-2 flex flex-col md:flex-row gap-6 md:gap-16 justify-center items-center mt-6">
           <MobileMockup
             src="/mockups/ScenepackScreen.png"
             alt="Temperature control screen"
@@ -87,7 +89,8 @@ const HomePage = () => {
             alt="Room control screen"
           />
         </div>
-      </div>
+      </section>
+      <section className="px-20 flex items-center justify-between"></section>
     </main>
   );
 };

@@ -9,7 +9,7 @@ import { useParams, usePathname } from "next/navigation";
 export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
   const { data, pending, error } = useAppSelector(selectCategories);
-  
+
   const routes = data?.map((item) =>
     item.name === "Home"
       ? {
@@ -26,7 +26,12 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
   );
 
   return (
-    <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
+    <nav
+      className={cn(
+        "z-10 sticky flex items-center space-x-4 lg:space-x-6",
+        className
+      )}
+    >
       {pending && "Loading..."}
       {data &&
         routes?.map((route) => (
@@ -34,10 +39,8 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
             key={route.href}
             href={route.href}
             className={cn(
-              "text-sm font-medium transition-colors hover:text-primary",
-              route.active
-                ? "text-black dark:text-white"
-                : "text-muted-foreground"
+              "text-sm font-medium hover:text-primary hover:scale-110 hover:font-bold transition-all duration-200",
+              route.active ? "text-white font-bold scale-110" : "text-white"
             )}
           >
             {route.label}
