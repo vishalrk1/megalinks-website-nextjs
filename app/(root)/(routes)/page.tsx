@@ -1,4 +1,6 @@
 "use client";
+import MockupLeftSection from "@/components/DetailSection/MockupLeftSection";
+import MockupRightSection from "@/components/DetailSection/MockupRightSection";
 import Navbar from "@/components/nav-bar";
 import BannerImage from "@/components/ui/banner";
 import Container from "@/components/ui/container";
@@ -62,19 +64,19 @@ const HomePage = () => {
 
   return (
     <main className="">
-      <section className="relative bg-white min-h-screen flex flex-col justify-center items-center p-8 overflow-hidden">
-        <div className="absolute h-[70%] bg-blue-500 top-0 left-0 right-0 rounded-b-md"></div>
-        <div className="relative z-10 text-white mb-4">
-          <h1 className="text-5xl leading-6 md:text-6xl font-bold mb-4 text-start mt-2">
+      <section className="relative bg-white min-h-screen flex flex-col justify-start items-center p-8 overflow-hidden">
+        <div className="absolute h-[50%] lg:h-[70%] bg-blue-500 top-0 left-0 right-0 rounded-b-md"></div>
+        <div className="relative w-full flex flex-col items-center justify-center z-10 text-white mb-4">
+          <h1 className="text-2xl md:text-5xl leading-6 lg:text-6xl font-bold mb-4 text-start md:mt-2">
             Mega Links Application
           </h1>
-          <p className="text-center max-w-2xl mx-auto">
-            Megalinks is an android app where we provide free resources
-            available for video editing, like Scenepacks, project files of the
-            big editor, tutorials, etc..
+          <p className="text-sm md:text-base text-center max-w-2xl mx-auto">
+            Megalinks provides a wide range of resources for video editing
+            enthusiasts. From scene packs to project files, we offer everything
+            you need to enhance your editing skills.
           </p>
         </div>
-        <div className="relative z-2 flex flex-col md:flex-row gap-6 md:gap-16 justify-center items-center mt-6">
+        <div className="relative z-2 flex flex-row gap-6 md:gap-16 justify-center items-center md:mt-6 bottom-28 lg:bottom-0">
           <MobileMockup
             src="/mockups/ScenepackScreen.png"
             alt="Temperature control screen"
@@ -90,7 +92,50 @@ const HomePage = () => {
           />
         </div>
       </section>
-      <section className="px-20 flex items-center justify-between"></section>
+      <MockupLeftSection
+        title="Scene Packs"
+        image="/mockups/mockup-1.png"
+        buttonText="Explore Packs"
+        onClick={() => router.push("/scenepacks")}
+        description="Megalinks provides a wide range of resources for video editing
+            enthusiasts. From scene packs to project files, we offer everything
+            you need to enhance your editing skills."
+      />
+      <MockupRightSection
+        title="Scene Packs"
+        image="/mockups/mockup-2.png"
+        buttonText="Explore Packs"
+        onClick={() => router.push("/scenepacks")}
+        description="Megalinks provides a wide range of resources for video editing
+            enthusiasts. From scene packs to project files, we offer everything
+            you need to enhance your editing skills."
+      />
+      {/* <section className="container mx-auto py-16">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="relative h-[700px] flex justify-center items-center">
+            <div className="absolute lg:bottom-24 left-1/2 transform -translate-x-1/2 w-3/5 h-3/5 bg-blue-500 rounded-full"></div>
+            <div className="relative z-10 w-3/4 h-full">
+              <Image
+                src="/mockups/mockup-1.png"
+                alt="Megalinks app mockup"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <h2 className="text-3xl font-semibold mb-4">Scene Packs</h2>
+            <p className="mb-4">
+              Megalinks provides a wide range of resources for video editing
+              enthusiasts. From scene packs to project files, we offer
+              everything you need to enhance your editing skills.
+            </p>
+            <button className="bg-blue-500 text-white px-6 py-2 rounded-md w-max">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section> */}
     </main>
   );
 };
