@@ -31,7 +31,7 @@ const MockupRightSection: React.FC<MockupRightSectionProps> = ({
         </div>
         <div className="relative flex-1 h-[300px] sm:h-[400px] flex justify-center items-center">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="aspect-square w-[60%] h-3/4 bg-blue-500 rounded-full"></div>
+            <div className="aspect-square w-[40%] h-[60%] bg-blue-500 rounded-full"></div>
           </div>
           <div className="relative z-10 w-full h-full">
             <Image

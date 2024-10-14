@@ -3,6 +3,7 @@ import MockupLeftSection from "@/components/DetailSection/MockupLeftSection";
 import MockupRightSection from "@/components/DetailSection/MockupRightSection";
 import Navbar from "@/components/nav-bar";
 import BannerImage from "@/components/ui/banner";
+import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
 import FeedbacHomekList from "@/components/ui/feedbacks/feedback-home-list";
 import ScenepackList from "@/components/ui/scenepacks/scenepack-list";
@@ -92,30 +93,78 @@ const HomePage = () => {
           />
         </div>
       </section>
-      <section className="px-8 md:px-16 my-12 flex items-center justify-center w-full">
-        <h1 className="text-3xl md:text-4xl font-bold ">About MegaLinks</h1>
+      <section className="px-8 md:px-16 my-24 flex items-center justify-center w-full">
+        <h1 className="text-3xl md:text-6xl font-bold ">About MegaLinks</h1>
       </section>
       <MockupLeftSection
         title="Scene Packs"
-        image="/mockups/mockup-1.png"
+        image="/mockups/ScenepackMockup.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
         description="Our collection of scene packs provides a wide array of pre-edited, high-quality footage ready for your video projects. Whether you're creating cinematic visuals, music videos, or other creative edits, these scene packs will help you bring your vision to life with ease."
       />
       <MockupRightSection
         title="Editing Tutorials"
-        image="/mockups/mockup-1.png"
+        image="/mockups/mockup-2.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
         description="Take your video editing skills to the next level with our comprehensive tutorials. Whether you're a beginner looking to learn the basics or an experienced editor aiming to refine your techniques, our tutorials cover everything from software tips to advanced editing tricks."
       />
       <MockupLeftSection
         title="Anime Packs"
-        image="/mockups/mockup-1.png"
+        image="/mockups/AnimeRawMockup.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
         description="Dive into the world of anime with our exclusive anime packs, designed for fans and editors alike. These packs feature iconic clips, animations, and visual effects from your favorite anime series. Perfect for AMVs (Anime Music Videos) or creative edits, our anime packs help you craft visually stunning content with a distinct anime flair."
       />
+      <section className="w-full bg-slate-100 flex items-start py-12 px-6 mt-16 md:px-40">
+        <div className="relative h-[500px] w-[40%]">
+          <Image
+            src="/mockups/AboutMegaLiksMockup.png"
+            alt=""
+            fill
+            className="object-contain"
+          />
+        </div>
+        <div className="w-[60%] flex flex-col gap-4 items-start">
+          <h1 className="text-3xl md:text-4xl font-bold">
+            {"Download App Now"}
+          </h1>
+          <p className="text-sm md:text-base text-gray-600 font-semibold">
+            Mega Link is a Editing stuff app .. which is developed by Vishal &
+            Abhijit Make your edit Better with our ScenePacks, Project Files,
+            Editing tutorial We provide you all necessary Editing Stuff &
+            Requirements which will help you to make a better edit within Less
+            time
+          </p>
+          <p className="text-sm md:text-base text-gray-600 font-semibold">
+            Be part of the movement! Mega Link, is the first pro editing stuff
+            app for your smartphone, Bringing you professional Quality full Hd
+            Scenepacks, One of the best animation & editing tutorial, Overlays
+            and many more.
+          </p>
+          <div className="flex gap-4 w-full rounded-md shadow-md p-4 bg-white">
+            <div className="w-3/4 h-[140px] relative">
+              <Image
+                src="/discord.png"
+                alt=""
+                fill
+                className="object-cover rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2 h-full items-start justify-start">
+              <h1 className="text-xl md:text-2xl font-semibold">
+                Join Our Discrod
+              </h1>
+              <p className="w-full text-gray-500 text-base">
+                Join our discord community to hangout, ask questions and request
+                more features, scene packs & many more
+              </p>
+              <Button className="w-1/2 bg-yellow-400 text-black hover:bg-yellow-400 font-semibold">Join Now</Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
