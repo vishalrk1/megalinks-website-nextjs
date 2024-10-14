@@ -92,50 +92,30 @@ const HomePage = () => {
           />
         </div>
       </section>
+      <section className="px-8 md:px-16 my-12 flex items-center justify-center w-full">
+        <h1 className="text-3xl md:text-4xl font-bold ">About MegaLinks</h1>
+      </section>
       <MockupLeftSection
         title="Scene Packs"
         image="/mockups/mockup-1.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
-        description="Megalinks provides a wide range of resources for video editing
-            enthusiasts. From scene packs to project files, we offer everything
-            you need to enhance your editing skills."
+        description="Our collection of scene packs provides a wide array of pre-edited, high-quality footage ready for your video projects. Whether you're creating cinematic visuals, music videos, or other creative edits, these scene packs will help you bring your vision to life with ease."
       />
       <MockupRightSection
-        title="Scene Packs"
-        image="/mockups/mockup-2.png"
+        title="Editing Tutorials"
+        image="/mockups/mockup-1.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
-        description="Megalinks provides a wide range of resources for video editing
-            enthusiasts. From scene packs to project files, we offer everything
-            you need to enhance your editing skills."
+        description="Take your video editing skills to the next level with our comprehensive tutorials. Whether you're a beginner looking to learn the basics or an experienced editor aiming to refine your techniques, our tutorials cover everything from software tips to advanced editing tricks."
       />
-      {/* <section className="container mx-auto py-16">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative h-[700px] flex justify-center items-center">
-            <div className="absolute lg:bottom-24 left-1/2 transform -translate-x-1/2 w-3/5 h-3/5 bg-blue-500 rounded-full"></div>
-            <div className="relative z-10 w-3/4 h-full">
-              <Image
-                src="/mockups/mockup-1.png"
-                alt="Megalinks app mockup"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-semibold mb-4">Scene Packs</h2>
-            <p className="mb-4">
-              Megalinks provides a wide range of resources for video editing
-              enthusiasts. From scene packs to project files, we offer
-              everything you need to enhance your editing skills.
-            </p>
-            <button className="bg-blue-500 text-white px-6 py-2 rounded-md w-max">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section> */}
+      <MockupLeftSection
+        title="Anime Packs"
+        image="/mockups/mockup-1.png"
+        buttonText="Explore Packs"
+        onClick={() => router.push("/scenepacks")}
+        description="Dive into the world of anime with our exclusive anime packs, designed for fans and editors alike. These packs feature iconic clips, animations, and visual effects from your favorite anime series. Perfect for AMVs (Anime Music Videos) or creative edits, our anime packs help you craft visually stunning content with a distinct anime flair."
+      />
     </main>
   );
 };
