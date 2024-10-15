@@ -97,7 +97,7 @@ const HomePage = () => {
         </div>
       </section>
       <section className="px-8 md:px-16 my-4 md:my-6 flex flex-col items-center justify-center gap-4 w-full">
-        <h1 className="text-3xl md:text-6xl font-semibold">About MegaLinks</h1>
+        <h1 className="text-3xl md:text-5xl font-semibold">About MegaLinks</h1>
         <div className="w-full md:w-[70%] bg-blue-500 rounded-md py-4 px-8 flex flex-wrap items-center justify-center gap-12 gap-y-4">
           <div className="flex flex-col items-center justify-center">
             <p className="text-xl md:text-3xl text-white font-semibold md:font-bold">
@@ -172,7 +172,6 @@ const HomePage = () => {
                 </div>
               </div>
             </Link>
-
             <div className="hidden md:flex gap-4 w-full rounded-md shadow-md p-4 bg-white">
               <div className="w-3/4 h-[140px] relative">
                 <Image
@@ -198,27 +197,27 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* <MockupLeftSection
+      <MockupRightSection
         title="Scene Packs"
-        image="/mockups/ScenepackMockup.png"
+        image="/mockups/ScenepackScreen.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
         description="Our collection of scene packs provides a wide array of pre-edited, high-quality footage ready for your video projects. Whether you're creating cinematic visuals, music videos, or other creative edits, these scene packs will help you bring your vision to life with ease."
       />
-      <MockupRightSection
+      <MockupLeftSection
         title="Editing Tutorials"
-        image="/mockups/mockup-2.png"
+        image="/mockups/TutorialScreen.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
         description="Take your video editing skills to the next level with our comprehensive tutorials. Whether you're a beginner looking to learn the basics or an experienced editor aiming to refine your techniques, our tutorials cover everything from software tips to advanced editing tricks."
       />
-      <MockupLeftSection
-        title="Anime Packs"
-        image="/mockups/AnimeRawMockup.png"
+      <MockupRightSection
+        title="Scene Packs"
+        image="/mockups/ScenepackScreen.png"
         buttonText="Explore Packs"
         onClick={() => router.push("/scenepacks")}
-        description="Dive into the world of anime with our exclusive anime packs, designed for fans and editors alike. These packs feature iconic clips, animations, and visual effects from your favorite anime series. Perfect for AMVs (Anime Music Videos) or creative edits, our anime packs help you craft visually stunning content with a distinct anime flair."
-      /> */}
+        description="Our collection of scene packs provides a wide array of pre-edited, high-quality footage ready for your video projects. Whether you're creating cinematic visuals, music videos, or other creative edits, these scene packs will help you bring your vision to life with ease."
+      />
     </main>
   );
 };

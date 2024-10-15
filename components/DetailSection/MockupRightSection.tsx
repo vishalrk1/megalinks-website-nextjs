@@ -17,36 +17,36 @@ const MockupRightSection: React.FC<MockupRightSectionProps> = ({
   onClick,
 }) => {
   return (
-    <section className="container my-4 md:my-0 mx-auto px-6 md:px-12">
-      <div className="flex flex-col-reverse md:flex-row items-center">
-        <div className="flex-1 flex flex-col justify-center md:ml-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-2 md:mb-4">
-            {title}
-          </h2>
-          <p className="mb-2 md:mb-6 text-sm sm:text-base">{description}</p>
-          <button
-            onClick={onClick}
-            className="bg-blue-500 text-white px-6 py-2 rounded-md w-max text-sm sm:text-base hover:bg-blue-600 transition-colors"
-          >
-            {buttonText}
-          </button>
-        </div>
-        <div className="relative flex-1 h-[300px] sm:h-[400px] w-full flex justify-center items-center mb-8 md:mb-0 px-6">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute h-[60%] w-[40%] md:w-[45%] rounded-full mx-6 bg-blue-300"></div>
-            <div className="absolute h-[70%] w-[50%] md:w-[55%] rounded-full mx-6 bg-blue-300 opacity-25"></div>
-          </div>
-          <div className="relative z-10 w-full h-full min-h-[200px]">
-            <Image
-              src={image}
-              alt="Megalinks app mockup"
-              layout="fill"
-              objectFit="contain"
-              className="rounded-lg"
-            />
-          </div>
+    <section className="w-full flex md:flex-row flex-col-reverse items-center gap-4 md:gap-8 py-4 md:py-12 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
+      <div className="flex flex-col justify-center w-full md:w-1/2">
+        <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold mb-2 md:mb-4">
+          {title}
+        </h2>
+        <p className="mb-2 md:mb-6 text-xs sm:text-base text-gray-500 font-semibold">
+          {description}
+        </p>
+        <button
+          onClick={onClick}
+          className="bg-blue-500 text-white px-6 py-2 rounded-md w-max text-sm sm:text-base hover:bg-blue-600 transition-colors"
+        >
+          {buttonText}
+        </button>
+      </div>
+      <div className="relative w-full md:w-1/2 flex flex-col items-center justify-center gap-4 md:p-8 my-4 md:my-0">
+        <div className="absolute h-[70vw] w-[70vw] md:h-[40vw] md:w-[40vw] lg:h-[40vw] lg:w-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-blue-500/10"></div>
+        <div className="absolute h-[50vw] w-[50vw] md:h-[30vw] md:w-[30vw] lg:h-[30vw] lg:w-[30vw] max-w-[375px] max-h-[375px] rounded-full bg-blue-500/20"></div>
+        <div className="relative w-[60vw] h-[60vw] md:w-[25vw] md:h-[500px] lg:w-[20vw] lg:h-[450px] max-w-[300px] max-h-[300px] md:max-w-[400px] md:max-h-[500px]">
+          <Image
+            alt="Scene pack mockup"
+            src={image}
+            fill
+            className="object-contain"
+          />
         </div>
       </div>
+      <h2 className="w-full block md:hidden text-2xl sm:text-3xl font-semibold mb-2 md:mb-4 text-left">
+        {title}
+      </h2>
     </section>
   );
 };
