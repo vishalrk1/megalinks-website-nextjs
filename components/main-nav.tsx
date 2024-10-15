@@ -40,7 +40,10 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
             href={route.href}
             className={cn(
               "text-sm font-medium hover:text-primary hover:scale-110 hover:font-bold transition-all duration-200",
-              route.active ? "text-white font-bold scale-110" : "text-white"
+              pathname === "/" ? "text-white" : "text-black",
+              route.active && pathname === "/"
+                ? "text-white font-bold scale-110"
+                : "text-black scale-110"
             )}
           >
             {route.label}

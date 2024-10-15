@@ -5,20 +5,22 @@ import { Button } from "./ui/button";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { userSessionSelector } from "@/redux/userSession/selector";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserSession } from "@/redux/userSession/actions";
 import { useEffect } from "react";
 import { RootState } from "@/redux/store";
 import { logoutUser } from "@/redux/auth/action";
+import { twMerge } from "tailwind-merge";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
+  const pathname = usePathname();
   const router = useRouter();
   const { session } = useSelector((state: RootState) => state.fetchUserSession);
   const { user } = useSelector((state: RootState) => state.auth);
 
-  console.log(session);
+  console.log(pathname);
 
   const handelSignOut = async () => {
     dispatch(logoutUser());
@@ -30,7 +32,13 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="bg-blue-500 shadow-none border-0 z-20">
+    <nav
+      className={twMerge(
+        "shadow-none border-0 z-20",
+        pathname === "/" && "bg-blue-500",
+        pathname === "/sign-up" && "hidden"
+      )}
+    >
       <div className="flex flex-row h-16 items-center justify-between px-4 space-x-2 border-0">
         <div className="flex flex-row space-x-5">
           <MobileSidebar />
@@ -45,7 +53,10 @@ const Navbar = () => {
             <div className="space-x-2">
               <Link href="login">
                 <Button
-                  className="flex-2 text-white hover:scale-110 transition-all duration-300"
+                  className={twMerge(
+                    "flex-2 hover:scale-110 transition-all duration-300",
+                    pathname === "/" ? "text-white" : "text-black"
+                  )}
                   variant="link"
                 >
                   LogIn
