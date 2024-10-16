@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+import { PlaySquare } from "lucide-react";
+
 interface MockupRightSectionProps {
   image: string;
   title: string;
@@ -17,7 +19,7 @@ const MockupRightSection: React.FC<MockupRightSectionProps> = ({
   onClick,
 }) => {
   return (
-    <section className="w-full flex md:flex-row flex-col-reverse items-center gap-4 md:gap-8 py-4 md:py-12 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
+    <section className="w-full flex md:flex-row flex-col-reverse items-center gap-4 md:gap-8 py-2 md:py-0 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
       <div className="flex flex-col justify-center w-full md:w-1/2">
         <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold mb-2 md:mb-4">
           {title}

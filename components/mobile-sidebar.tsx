@@ -14,24 +14,33 @@ export const MobileSidebar = () => {
   const router = useRouter();
   const { data, pending, error } = useAppSelector(selectCategories);
 
-  const routes = data?.map((item) =>
-    item.name === "Home"
-      ? {
-          href: `/`,
-          label: item.name,
-          active: pathname === `/`,
-        }
-      : {
-          href: `/${item.name.replace(/\s+/g, "").toLowerCase()}`,
-          label: item.name,
-          active:
-            pathname === `/${item.name.replace(/\s+/g, "").toLowerCase()}`,
-        }
-  );
+  const routes = [
+    {
+      href: `/`,
+      label: "Home",
+      active: pathname === `/`,
+    },
+  ];
+
+  // data?.map((item) =>
+  //   item.name === "Home"
+  //     ? {
+  //         href: `/`,
+  //         label: item.name,
+  //         active: pathname === `/`,
+  //       }
+  //     : {
+  //         href: `/${item.name.replace(/\s+/g, "").toLowerCase()}`,
+  //         label: item.name,
+  //         active:
+  //           pathname === `/${item.name.replace(/\s+/g, "").toLowerCase()}`,
+  //       }
+  // );
+
   return (
     <Sheet>
       <SheetTrigger className="md:hidden">
-        <Menu />
+        <Menu color={pathname === "/" ? "white" : "black"} />
       </SheetTrigger>
       <SheetContent
         side="left"
@@ -52,18 +61,6 @@ export const MobileSidebar = () => {
             >
               <span>{route.label}</span>
             </button>
-            // <div
-            //   key={route.href}
-            //   onClick={() => router.push(route.href)}
-            //   className={cn(
-            //     "font-medium transition-colors hover:text-primary cursor-pointer",
-            // route.active
-            //   ? "text-black dark:text-white"
-            //   : "text-muted-foreground"
-            //   )}
-            // >
-            //   {route.label}
-            // </div>
           ))}
       </SheetContent>
     </Sheet>

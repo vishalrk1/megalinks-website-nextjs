@@ -17,7 +17,7 @@ const MockupLeftSection: React.FC<MockupLeftSectionProps> = ({
   onClick,
 }) => {
   return (
-    <section className="w-full flex md:flex-row flex-col items-center gap-4 md:gap-8 py-4 md:py-12 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
+    <section className="w-full flex md:flex-row flex-col items-center gap-4 md:gap-8 py-4 md:py-0 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
       <h2 className="w-full block md:hidden text-2xl sm:text-3xl font-semibold mb-2 md:mb-4 text-left">
         {title}
       </h2>

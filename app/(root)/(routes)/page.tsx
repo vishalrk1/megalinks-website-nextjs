@@ -17,11 +17,11 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectScenepack } from "@/redux/scenepacks/selector";
 import { selectTutorials } from "@/redux/tutorials/selector";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import playstoreIcon from "../../assets/playstore.svg";
+import PlaystoreButton from "@/components/Buttons/PlaystoreButton";
+import AppStoreButton from "@/components/Buttons/AppStoreButton";
 
 interface Props {
   src: string;
@@ -67,7 +67,7 @@ const HomePage = () => {
   const featuredFeedbacks = feedbacksData.filter((item) => item.isFeatured);
 
   return (
-    <main className="">
+    <main>
       <section className="relative bg-white flex flex-col justify-start items-center p-8 overflow-hidden">
         <div className="absolute h-[70%] bg-blue-500 top-0 left-0 right-0 rounded-b-md"></div>
         <div className="w-full flex flex-col items-center justify-center z-10 text-white mb-4">
@@ -155,25 +155,8 @@ const HomePage = () => {
               tutorials. We provide all the essential editing resources and
               tools you need to create better edits in less time.
             </p>
-            <Link
-              href={
-                "https://play.google.com/store/apps/details?id=com.vk.MegaLinks"
-              }
-              target="_"
-            >
-              <div className="flex items-center border rounded-lg px-4 py-2 w-auto bg-black">
-                <Image src={playstoreIcon} alt="" height={40} width={40} />
-                <div className="text-left ml-3">
-                  <p className="text-xs text-white">Download on </p>
-                  <p className="text-sm md:text-base text-white">
-                    {" "}
-                    Google Play Store{" "}
-                  </p>
-                </div>
-              </div>
-            </Link>
             <div className="hidden md:flex gap-4 w-full rounded-md shadow-md p-4 bg-white">
-              <div className="w-3/4 h-[140px] relative">
+              <div className="w-3/4 h-[160px] md:h-[140px] relative">
                 <Image
                   src="/discord.png"
                   alt=""
@@ -193,6 +176,10 @@ const HomePage = () => {
                   Join Now
                 </Button>
               </div>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <PlaystoreButton />
+              <AppStoreButton />
             </div>
           </div>
         </div>
@@ -218,6 +205,7 @@ const HomePage = () => {
         onClick={() => router.push("/scenepacks")}
         description="Our collection of scene packs provides a wide array of pre-edited, high-quality footage ready for your video projects. Whether you're creating cinematic visuals, music videos, or other creative edits, these scene packs will help you bring your vision to life with ease."
       />
+      <div className="mb-12"></div>
     </main>
   );
 };
