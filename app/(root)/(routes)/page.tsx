@@ -22,29 +22,8 @@ import React, { useEffect, useState } from "react";
 
 import PlaystoreButton from "@/components/Buttons/PlaystoreButton";
 import AppStoreButton from "@/components/Buttons/AppStoreButton";
+import MockupHeroContainer from "@/components/Hero/MockupHeroContainer";
 
-interface Props {
-  src: string;
-  alt: string;
-  isCenter?: boolean;
-}
-
-const MobileMockup: React.FC<Props> = ({ src, alt, isCenter }) => (
-  <div
-    className={`relative flex-shrink-0 ${
-      isCenter
-        ? "w-[180px] h-[340px] md:w-[320px] md:h-[640px] z-10"
-        : "w-[180px] h-[310px] md:w-[250px] md:h-[500px]"
-    } transition-all duration-500 ease-in-out`}
-  >
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      className="rounded-[2rem] overflow-hidden object-contain"
-    />
-  </div>
-);
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -80,21 +59,7 @@ const HomePage = () => {
             you need to enhance your editing skills.
           </p>
         </div>
-        <div className="relative z-2 flex flex-row md:gap-16 justify-center items-center md:mt-6">
-          <MobileMockup
-            src="/mockups/ScenepackScreen.png"
-            alt="Temperature control screen"
-          />
-          <MobileMockup
-            src="/mockups/Homepage1.png"
-            alt="Energy management screen"
-            isCenter={true}
-          />
-          <MobileMockup
-            src="/mockups/TutorialScreen.png"
-            alt="Room control screen"
-          />
-        </div>
+        <MockupHeroContainer />
       </section>
       <section className="px-8 md:px-16 my-4 md:my-6 flex flex-col items-center justify-center gap-4 w-full">
         <h1 className="text-3xl md:text-5xl font-semibold">About MegaLinks</h1>
