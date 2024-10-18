@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { motion, useInView } from "framer-motion";
 import { PlaySquare } from "lucide-react";
+import AnimatedText from "../Animations/AnimatedText";
 
 interface MockupRightSectionProps {
   image: string;
@@ -55,14 +56,18 @@ const MockupRightSection: React.FC<MockupRightSectionProps> = ({
   };
 
   return (
-    <section className="w-full flex md:flex-row flex-col-reverse items-center gap-4 md:gap-8 py-2 md:py-0 px-4 md:px-6 xl:px-40 mb-8 md:mb-0">
+    <section className="w-full flex md:flex-row flex-col-reverse items-center gap-4 md:gap-8 py-2 md:py-0 px-4 md:px-4 xl:px-40 mb-8 md:mb-0">
       <div className="flex flex-col justify-center w-full md:w-1/2">
-        <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold mb-2 md:mb-4">
-          {title}
-        </h2>
-        <p className="mb-2 md:mb-6 text-xs sm:text-base text-gray-500 font-semibold">
-          {description}
-        </p>
+        <AnimatedText
+          text={title}
+          delay={0.3}
+          className="hidden md:block text-2xl sm:text-3xl font-semibold mb-2 md:mb-4"
+        />
+        <AnimatedText
+          text={description}
+          delay={0.3}
+          className="mb-2 md:mb-6 text-xs sm:text-base text-gray-500 font-semibold"
+        />
         <button
           onClick={onClick}
           className="bg-blue-500 text-white px-6 py-2 rounded-md w-max text-sm sm:text-base hover:bg-blue-600 transition-colors"

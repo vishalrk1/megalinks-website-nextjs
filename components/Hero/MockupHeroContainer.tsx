@@ -18,7 +18,7 @@ const MobileMockup: React.FC<Props> = ({ src, alt, isCenter }) => (
         y: 0,
         opacity: 1,
         transition: {
-          duration: isCenter ? 0.7 : 0.8,
+          duration: isCenter ? 1.4 : 1.5,
           ease: "easeInOut",
         },
       },

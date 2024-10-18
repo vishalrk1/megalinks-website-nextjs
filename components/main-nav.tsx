@@ -39,7 +39,7 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
         className
       )}
     >
-      {pending && "Loading..."}
+      {/* {pending && "Loading..."}
       {data &&
         routes?.map((route) => (
           <Link
@@ -55,7 +55,22 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
           >
             {route.label}
           </Link>
-        ))}
+        ))} */}
+      {routes?.map((route) => (
+        <Link
+          key={route.href}
+          href={route.href}
+          className={cn(
+            "text-base md:text-lg font-medium hover:text-primary hover:scale-110 hover:font-bold transition-all duration-200",
+            pathname === "/" ? "text-white" : "text-black",
+            route.active && pathname === "/"
+              ? "text-white font-bold scale-110"
+              : "text-black scale-110"
+          )}
+        >
+          {route.label}
+        </Link>
+      ))}
     </nav>
   );
 }

@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { RootState } from "@/redux/store";
 import { logoutUser } from "@/redux/auth/action";
 import { twMerge } from "tailwind-merge";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -51,22 +52,26 @@ const Navbar = () => {
             </Button>
           ) : (
             <div className="space-x-2">
-              <Link href="login">
-                <Button
-                  className={twMerge(
-                    "flex-2 hover:scale-110 transition-all duration-300",
-                    pathname === "/" ? "text-white" : "text-black"
-                  )}
-                  variant="link"
-                >
-                  LogIn
-                </Button>
-              </Link>
-              <Link href="sign-up">
-                <Button className="flex-2 bg-white hover:scale-110 transition-all duration-300 text-black hover:bg-white">
-                  SignUp
-                </Button>
-              </Link>
+              {/* <Link href="login"> */}
+              <Button
+                className={twMerge(
+                  "flex-2 hover:scale-110 transition-all duration-300",
+                  pathname === "/" ? "text-white" : "text-black"
+                )}
+                variant="link"
+                onClick={() => toast.error("Not Availabel at the Moment")}
+              >
+                LogIn
+              </Button>
+              {/* </Link> */}
+              {/* <Link href="sign-up"> */}
+              <Button
+                onClick={() => toast.error("Not Availabel at the Moment")}
+                className="flex-2 bg-white hover:scale-110 transition-all duration-300 text-black hover:bg-white"
+              >
+                SignUp
+              </Button>
+              {/* </Link> */}
             </div>
           )}
         </div>
