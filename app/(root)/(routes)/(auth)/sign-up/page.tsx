@@ -11,6 +11,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
+import Banner from "../../../../assets/FeedbackHeader.jpg";
+import Image from "next/image";
+import Link from "next/link";
+
 export default function SignUpPage() {
   const router = useRouter();
   const dispatch = useDispatch<any>();
@@ -50,93 +54,99 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="flex flex-row h-screen items-center justify-center">
-      <div className="w-full max-w-xs">
-        <CardWrapper
-          headerTitle="Register"
-          backButtonHref="/login"
-          backButtonLbel="already have an account?"
-          headerLabel="keep exploring and create crazy videos"
-          showSocials={false}
-        >
-          <input
-            type="text"
-            placeholder="Name"
-            className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {isError && <ErrorInfo message={errorMeaasage} />}
-          <button
-            className="w-full bg-black mt-3 text-white py-2.5 font-satoshi font-medium rounded-md hover:bg-gray-700 focus:outline-none focus:ring-0 disabled:bg-gray-200 disabled:text-gray-700 disabled:cursor-not-allowed"
-            onClick={handleSignup}
-            disabled={status === "loading"}
+    <main className="min-h-screen">
+      <div className="relative flex flex-col h-screen items-end justify-end p-4">
+        <div className="relative w-full z-10 inset-0 flex items-center justify-end px-20">
+          <Link href="/">
+            <h1 className="text-white font-bold text-2xl py-6 hover:underline">
+              Back to home
+            </h1>
+          </Link>
+        </div>
+        <div className="relative z-10 w-[50%] h-full rounded-xl flex flex-col items-center justify-center">
+          <CardWrapper
+            headerTitle="Register"
+            backButtonHref="/login"
+            backButtonLbel="already have an account?"
+            headerLabel="keep exploring and create crazy videos"
+            showSocials={false}
           >
-            {status === "loading" && <Loader />}
-            Create Account
-          </button>
-        </CardWrapper>
-        {/* <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4"
-          action="/"
-          method="POST"
-          onSubmit={handleSignUp}
-        >
-          <div className="text-xl font-bold m-2 mb-5">Create New Account</div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email
-            </label>
             <input
-              id="Email"
+              type="text"
+              placeholder="Name"
+              className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
               type="email"
-              placeholder="Enter a valid email"
+              placeholder="Email"
+              className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
+              onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
             <input
-              id="password"
               type="password"
-              placeholder="**********"
+              placeholder="Password"
+              className="w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              className="shadow appearance-none border rounded w-full mb-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="text-gray-400 text-xs italic">
-              please choose a password
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <Button type="submit">Sign Up</Button>
-          </div>
-        </form> */}
+            {isError && <ErrorInfo message={errorMeaasage} />}
+            <button
+              className="w-full bg-black mt-3 text-white py-2.5 font-satoshi font-medium rounded-md hover:bg-gray-700 focus:outline-none focus:ring-0 disabled:bg-gray-200 disabled:text-gray-700 disabled:cursor-not-allowed"
+              onClick={handleSignup}
+              disabled={status === "loading"}
+            >
+              {status === "loading" && <Loader />}
+              Create Account
+            </button>
+          </CardWrapper>
+        </div>
+        <Image src={Banner} alt="Banner" fill className="object-cover" />
       </div>
-    </div>
+    </main>
+    // <div className="flex flex-row h-screen items-center justify-center">
+    //   <div className="w-full max-w-xs">
+    //     <CardWrapper
+    //       headerTitle="Register"
+    //       backButtonHref="/login"
+    //       backButtonLbel="already have an account?"
+    //       headerLabel="keep exploring and create crazy videos"
+    //       showSocials={false}
+    //     >
+    //       <input
+    //         type="text"
+    //         placeholder="Name"
+    //         className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
+    //         value={name}
+    //         onChange={(e) => setName(e.target.value)}
+    //       />
+    //       <input
+    //         type="email"
+    //         placeholder="Email"
+    //         className="mb-2 w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
+    //         value={email}
+    //         onChange={(e) => setEmail(e.target.value)}
+    //       />
+    //       <input
+    //         type="password"
+    //         placeholder="Password"
+    //         className="w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-sm font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0"
+    //         value={password}
+    //         onChange={(e) => setPassword(e.target.value)}
+    //       />
+    //       {isError && <ErrorInfo message={errorMeaasage} />}
+    //       <button
+    //         className="w-full bg-black mt-3 text-white py-2.5 font-satoshi font-medium rounded-md hover:bg-gray-700 focus:outline-none focus:ring-0 disabled:bg-gray-200 disabled:text-gray-700 disabled:cursor-not-allowed"
+    //         onClick={handleSignup}
+    //         disabled={status === "loading"}
+    //       >
+    //         {status === "loading" && <Loader />}
+    //         Create Account
+    //       </button>
+    //     </CardWrapper>
+    //   </div>
+    // </div>
   );
 }

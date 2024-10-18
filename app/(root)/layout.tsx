@@ -14,42 +14,40 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function MegalinksLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const dispatch = useAppDispatch();
-    const sessionDispatch = useDispatch()
-    const {session} = useSelector((state: RootState) => state.fetchUserSession);
-    const {user} = useSelector((state: RootState) => state.auth);
-    const [mounted, setMounted] = useState(false);
+  const dispatch = useAppDispatch();
+  const sessionDispatch = useDispatch();
+  const { session } = useSelector((state: RootState) => state.fetchUserSession);
+  const { user } = useSelector((state: RootState) => state.auth);
+  const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        dispatch(getCategories());
-        dispatch(getAnimePacks({isApproved: true}));
-        dispatch(getTutorials({isApproved: true}));
-        dispatch(getFeedbacks({}));
-        dispatch(getEditingTools());
-        dispatch(getScenePackData({isApproved: true}));
-        dispatch(getUserSession());
-        setMounted(true);
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getAnimePacks({ isApproved: true }));
+    dispatch(getTutorials({ isApproved: true }));
+    dispatch(getFeedbacks({}));
+    dispatch(getEditingTools());
+    dispatch(getScenePackData({ isApproved: true }));
+    dispatch(getUserSession());
+    setMounted(true);
+  }, [dispatch]);
 
-    useEffect(()=> {
-        sessionDispatch(getUserSession())
-    }, [user])
+  useEffect(() => {
+    sessionDispatch(getUserSession());
+  }, [user]);
 
-    if(!mounted){
-        return null;
-    }
+  if (!mounted) {
+    return null;
+  }
 
-    return (
-        <main className="bg-white">
-            <div className="fixed top-0 z-10 w-full h-max"> 
-                <Navbar />
-            </div>
-            {children}
-            <Footer />
-        </main>
-    );
-};
+  return (
+    <main className="bg-white">
+      <Navbar />
+      {children}
+      <Footer />
+    </main>
+  );
+}
