@@ -1,6 +1,7 @@
 import { useInView, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
+import AnimatedButton from "../Animations/AnimatedButton";
 
 interface MockupLeftSectionProps {
   image: string;
@@ -92,12 +93,7 @@ const MockupLeftSection: React.FC<MockupLeftSectionProps> = ({
         <p className="mb-2 md:mb-6 text-xs sm:text-base text-gray-500 font-semibold">
           {description}
         </p>
-        <button
-          onClick={onClick}
-          className="bg-blue-500 text-white px-6 py-2 rounded-md w-max text-sm sm:text-base hover:bg-blue-600 transition-colors"
-        >
-          {buttonText}
-        </button>
+        <AnimatedButton buttonText={buttonText} onClick={onClick} />
       </div>
     </section>
   );

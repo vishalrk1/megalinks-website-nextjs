@@ -3,6 +3,7 @@ import React from "react";
 import { motion, useInView } from "framer-motion";
 import { PlaySquare } from "lucide-react";
 import AnimatedText from "../Animations/AnimatedText";
+import AnimatedButton from "../Animations/AnimatedButton";
 
 interface MockupRightSectionProps {
   image: string;
@@ -68,12 +69,7 @@ const MockupRightSection: React.FC<MockupRightSectionProps> = ({
           delay={0.3}
           className="mb-2 md:mb-6 text-xs sm:text-base text-gray-500 font-semibold"
         />
-        <button
-          onClick={onClick}
-          className="bg-blue-500 text-white px-6 py-2 rounded-md w-max text-sm sm:text-base hover:bg-blue-600 transition-colors"
-        >
-          {buttonText}
-        </button>
+        <AnimatedButton buttonText={buttonText} onClick={onClick} />
       </div>
       <motion.div
         ref={ref}
